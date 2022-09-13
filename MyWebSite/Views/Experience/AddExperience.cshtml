@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "AddExperience";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Yeni Deneyim Ekleme Sayfası</h2>
+<form method="post">
+    <label>Deneyim başlığı</label>
+    <input type="text" class="form-control" name="ExperinceTitle" required />
+    <br />
+    <label>Deneyim Süresi</label>
+    <input type="text" class="form-control" name="ExperienceDate" required />
+    <br />
+    <label>Detay</label>
+    <input type="text" class="form-control" name="ExperienceDescription" required />
+    <br />
+    <button class="btn btn-info">Deneyim Ekle</button>
+
+</form>
+

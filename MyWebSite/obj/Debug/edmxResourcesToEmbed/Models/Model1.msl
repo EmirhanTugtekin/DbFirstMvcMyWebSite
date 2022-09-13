@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PersonalDbModelStoreContainer" CdmEntityContainer="PersonalDbEntities">
+    <EntitySetMapping Name="TblEducation">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblEducation">
+        <MappingFragment StoreEntitySet="TblEducation">
+          <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+          <ScalarProperty Name="EducationTitle" ColumnName="EducationTitle" />
+          <ScalarProperty Name="EduationDate" ColumnName="EduationDate" />
+          <ScalarProperty Name="EducationDescription" ColumnName="EducationDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblExperience">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblExperience">
+        <MappingFragment StoreEntitySet="TblExperience">
+          <ScalarProperty Name="ExperienceID" ColumnName="ExperienceID" />
+          <ScalarProperty Name="ExperinceTitle" ColumnName="ExperinceTitle" />
+          <ScalarProperty Name="ExperienceDate" ColumnName="ExperienceDate" />
+          <ScalarProperty Name="ExperienceDescription" ColumnName="ExperienceDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblFeature">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblFeature">
+        <MappingFragment StoreEntitySet="TblFeature">
+          <ScalarProperty Name="FeatureID" ColumnName="FeatureID" />
+          <ScalarProperty Name="FeatureTitle" ColumnName="FeatureTitle" />
+          <ScalarProperty Name="FeatureLogo" ColumnName="FeatureLogo" />
+          <ScalarProperty Name="FeatureDescription" ColumnName="FeatureDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblImage">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblImage">
+        <MappingFragment StoreEntitySet="TblImage">
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="ImageDescription" ColumnName="ImageDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblSkill">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblSkill">
+        <MappingFragment StoreEntitySet="TblSkill">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="SkillTitle" ColumnName="SkillTitle" />
+          <ScalarProperty Name="SkillValue" ColumnName="SkillValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TblTestimonial">
+      <EntityTypeMapping TypeName="PersonalDbModel.TblTestimonial">
+        <MappingFragment StoreEntitySet="TblTestimonial">
+          <ScalarProperty Name="TestimonialID" ColumnName="TestimonialID" />
+          <ScalarProperty Name="TestimonialName" ColumnName="TestimonialName" />
+          <ScalarProperty Name="TestimonialImage" ColumnName="TestimonialImage" />
+          <ScalarProperty Name="TestimonialTitle" ColumnName="TestimonialTitle" />
+          <ScalarProperty Name="TestimonialDescription" ColumnName="TestimonialDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

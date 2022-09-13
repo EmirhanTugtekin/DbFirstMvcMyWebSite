@@ -1,0 +1,23 @@
+﻿@model MyWebSite.Models.TblExperience
+@{
+    ViewBag.Title = "UpdateExperience";
+    Layout = "~/Views/Shared/MyLayout.cshtml";
+}
+
+<h2>Yetenek Düzenleme Sayfası</h2>
+<form method="post">
+
+    @Html.HiddenFor(x => x.ExperienceID, new { @class = "form-control" })
+
+
+    <label>Başlık</label>
+    @Html.TextBoxFor(x => x.ExperinceTitle, new { @class = "form-control" })
+    <br />
+    <label>Deneyim Süresi</label>
+    @Html.TextBoxFor(x => x.ExperienceDate, new { @class = "form-control" })
+    <br />
+    <label>Deneyim Detayı</label>
+    @Html.TextBoxFor(x => x.ExperienceDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Deneyim Güncelle</button>
+</form>

@@ -1,0 +1,101 @@
+﻿@*@model List<MyWebSite.Models.TblImage>*@
+@using MyWebSite.Models
+@model List<TblImage>
+<div class="products-4" id="portfolio">
+    <!-- Products4 block -->
+    <div id="products4-block" class="text-center">
+        <div class="container">
+            <div class="heading text-center mx-auto mb-5">
+                <h3 class="head">I Love What I Do</h3>
+                <p class="my-3 head">
+                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+                    Nulla mollis dapibus nunc, ut rhoncus
+                    turpis sodales quis. Integer sit amet mattis quam.
+                </p>
+            </div>
+            <input id="tab1" type="radio" name="tabs" checked>
+            <label class="tabtle" for="tab1">Devexpress</label>
+
+            <input id="tab2" type="radio" name="tabs">
+            <label class="tabtle" for="tab2">.Net Core</label>
+
+            <input id="tab3" type="radio" name="tabs">
+            <label class="tabtle" for="tab3">Html Css</label>
+
+            <input id="tab4" type="radio" name="tabs">
+            <label class="tabtle" for="tab4">@ViewBag.v</label>
+
+            <section id="content1" class="tab-content text-left">
+                <div class="d-grid grid-col-3">
+                    @foreach(var item in Model)
+                     {
+                        <div class="product">
+                            <a href="@if (item.Category == "Devexpress"){ @item.ImageUrl; }" data-lightbox="example-set"
+                               data-title="@item.ImageDescription">
+                                <figure>
+                                    <img src="@if (item.Category == "Devexpress"){ @item.ImageUrl; }" class="img-responsive" alt="" />
+                                </figure>
+                            </a>
+                        </div>
+                     }
+                    
+
+
+                </div>
+            </section>
+
+            <section id="content2" class="tab-content text-left">
+                <div class="d-grid grid-col-3">
+
+                    @foreach (var item in Model)
+                     {
+                        <div class="product">
+                            <a href="@if (item.Category == ".net core"){ @item.ImageUrl; }" data-lightbox="example-set"
+                               data-title="@item.ImageDescription">
+                                <figure>
+                                    <img src="@if (item.Category == ".net core"){ @item.ImageUrl; }" class="img-responsive" alt="" />
+                                </figure>
+                            </a>
+                        </div>
+                     }
+
+                </div>
+            </section>
+
+            <section id="content3" class="tab-content text-left">
+                <div class="d-grid grid-col-3">
+
+                    @foreach (var item in Model)
+                     {
+                        <div class="product">
+                            <a href="@if (item.Category == "html css"){ @item.ImageUrl; }" data-lightbox="example-set"
+                               data-title="@item.ImageDescription">
+                                <figure>
+                                    <img src="@if (item.Category == "html css"){ @item.ImageUrl; }" class="img-responsive" alt="" />
+                                </figure>
+                            </a>
+                        </div>
+                     }
+
+                </div>
+            </section>
+
+            <section id="content4" class="tab-content text-left">
+                <div class="d-grid grid-col-3">
+                    @foreach (var item in Model)
+                     {
+                        <div class="product">
+                            <a href="@if (item.Category == "mvc"){ @item.ImageUrl; }" data-lightbox="example-set"
+                               data-title="@item.ImageDescription">
+                                <figure>
+                                    <img src="@if (item.Category == "mvc"){@item.ImageUrl; }" class="img-responsive" alt="" />
+                                </figure>
+                            </a>
+                        </div>
+                     }
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

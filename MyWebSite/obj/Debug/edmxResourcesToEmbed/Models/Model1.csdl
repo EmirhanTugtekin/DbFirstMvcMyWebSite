@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PersonalDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TblEducation">
+    <Key>
+      <PropertyRef Name="EducationID" />
+    </Key>
+    <Property Name="EducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EducationTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EduationDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="EducationDescription" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblExperience">
+    <Key>
+      <PropertyRef Name="ExperienceID" />
+    </Key>
+    <Property Name="ExperienceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExperinceTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExperienceDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ExperienceDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblFeature">
+    <Key>
+      <PropertyRef Name="FeatureID" />
+    </Key>
+    <Property Name="FeatureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FeatureTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FeatureLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FeatureDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblImage">
+    <Key>
+      <PropertyRef Name="ImageID" />
+    </Key>
+    <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageUrl" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ImageDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TblSkill">
+    <Key>
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SkillTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SkillValue" Type="Byte" />
+  </EntityType>
+  <EntityType Name="TblTestimonial">
+    <Key>
+      <PropertyRef Name="TestimonialID" />
+    </Key>
+    <Property Name="TestimonialID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestimonialName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TestimonialImage" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TestimonialTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TestimonialDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="PersonalDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TblEducation" EntityType="Self.TblEducation" />
+    <EntitySet Name="TblExperience" EntityType="Self.TblExperience" />
+    <EntitySet Name="TblFeature" EntityType="Self.TblFeature" />
+    <EntitySet Name="TblImage" EntityType="Self.TblImage" />
+    <EntitySet Name="TblSkill" EntityType="Self.TblSkill" />
+    <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" />
+  </EntityContainer>
+</Schema>
