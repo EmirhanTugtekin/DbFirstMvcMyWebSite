@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PersonalDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="TblEducation">
     <Key>
       <PropertyRef Name="EducationID" />
@@ -36,6 +46,31 @@
     <Property Name="ImageDescription" Type="nvarchar" MaxLength="1000" />
     <Property Name="Category" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="TblMember">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MemberName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberSurname" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="MemberMail" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TblMemberRole">
+    <Key>
+      <PropertyRef Name="MemberRoleID" />
+    </Key>
+    <Property Name="MemberRoleID" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="MemberID" Type="int" />
+    <Property Name="RoleID" Type="int" />
+  </EntityType>
+  <EntityType Name="TblRole">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="10" />
+  </EntityType>
   <EntityType Name="TblSkill">
     <Key>
       <PropertyRef Name="SkillID" />
@@ -54,12 +89,48 @@
     <Property Name="TestimonialTitle" Type="nvarchar" MaxLength="50" />
     <Property Name="TestimonialDescription" Type="nvarchar" MaxLength="500" />
   </EntityType>
+  <Association Name="FK_TblMemberRole_TblMember">
+    <End Role="TblMember" Type="Self.TblMember" Multiplicity="0..1" />
+    <End Role="TblMemberRole" Type="Self.TblMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblMemberRole">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblMemberRole_TblRole">
+    <End Role="TblRole" Type="Self.TblRole" Multiplicity="0..1" />
+    <End Role="TblMemberRole" Type="Self.TblMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblRole">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="TblMemberRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="PersonalDbModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblEducation" EntityType="Self.TblEducation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblExperience" EntityType="Self.TblExperience" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblFeature" EntityType="Self.TblFeature" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblImage" EntityType="Self.TblImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblMember" EntityType="Self.TblMember" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblMemberRole" EntityType="Self.TblMemberRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TblRole" EntityType="Self.TblRole" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblSkill" EntityType="Self.TblSkill" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_TblMemberRole_TblMember" Association="Self.FK_TblMemberRole_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblMemberRole" EntitySet="TblMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblMemberRole_TblRole" Association="Self.FK_TblMemberRole_TblRole">
+      <End Role="TblRole" EntitySet="TblRole" />
+      <End Role="TblMemberRole" EntitySet="TblMemberRole" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

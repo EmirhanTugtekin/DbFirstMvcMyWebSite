@@ -11,6 +11,12 @@
         <EntityTypeShape EntityType="PersonalDbModel.TblImage" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonalDbModel.TblSkill" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="PersonalDbModel.TblTestimonial" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="PersonalDbModel.sysdiagrams" Width="1.5" PointX="7.5" PointY="5.375" />
+        <EntityTypeShape EntityType="PersonalDbModel.TblMember" Width="1.5" PointX="8.625" PointY="2.375" />
+        <EntityTypeShape EntityType="PersonalDbModel.TblMemberRole" Width="1.5" PointX="11.125" PointY="2.375" />
+        <EntityTypeShape EntityType="PersonalDbModel.TblRole" Width="1.5" PointX="13.75" PointY="2.25" />
+        <AssociationConnector Association="PersonalDbModel.FK_TblMemberRole_TblMember" />
+        <AssociationConnector Association="PersonalDbModel.FK_TblMemberRole_TblRole" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

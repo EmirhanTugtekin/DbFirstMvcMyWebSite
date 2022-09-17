@@ -31,5 +31,9 @@ namespace MyWebSite.Models
         public virtual DbSet<TblImage> TblImage { get; set; }
         public virtual DbSet<TblSkill> TblSkill { get; set; }
         public virtual DbSet<TblTestimonial> TblTestimonial { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TblMember> TblMember { get; set; }
+        public virtual DbSet<TblMemberRole> TblMemberRole { get; set; }
+        public virtual DbSet<TblRole> TblRole { get; set; }
     }
 }

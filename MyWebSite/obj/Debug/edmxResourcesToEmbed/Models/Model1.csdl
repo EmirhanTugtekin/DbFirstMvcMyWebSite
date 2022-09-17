@@ -61,5 +61,80 @@
     <EntitySet Name="TblImage" EntityType="Self.TblImage" />
     <EntitySet Name="TblSkill" EntityType="Self.TblSkill" />
     <EntitySet Name="TblTestimonial" EntityType="Self.TblTestimonial" />
+    <EntitySet Name="sysdiagrams" EntityType="PersonalDbModel.sysdiagrams" />
+    <EntitySet Name="TblMember" EntityType="PersonalDbModel.TblMember" />
+    <EntitySet Name="TblMemberRole" EntityType="PersonalDbModel.TblMemberRole" />
+    <EntitySet Name="TblRole" EntityType="PersonalDbModel.TblRole" />
+    <AssociationSet Name="FK_TblMemberRole_TblMember" Association="PersonalDbModel.FK_TblMemberRole_TblMember">
+      <End Role="TblMember" EntitySet="TblMember" />
+      <End Role="TblMemberRole" EntitySet="TblMemberRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TblMemberRole_TblRole" Association="PersonalDbModel.FK_TblMemberRole_TblRole">
+      <End Role="TblRole" EntitySet="TblRole" />
+      <End Role="TblMemberRole" EntitySet="TblMemberRole" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TblMember">
+    <Key>
+      <PropertyRef Name="MemberID" />
+    </Key>
+    <Property Name="MemberID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MemberMail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblMemberRole" Relationship="PersonalDbModel.FK_TblMemberRole_TblMember" FromRole="TblMember" ToRole="TblMemberRole" />
+  </EntityType>
+  <EntityType Name="TblMemberRole">
+    <Key>
+      <PropertyRef Name="MemberRoleID" />
+    </Key>
+    <Property Name="MemberRoleID" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="MemberID" Type="Int32" />
+    <Property Name="RoleID" Type="Int32" />
+    <NavigationProperty Name="TblMember" Relationship="PersonalDbModel.FK_TblMemberRole_TblMember" FromRole="TblMemberRole" ToRole="TblMember" />
+    <NavigationProperty Name="TblRole" Relationship="PersonalDbModel.FK_TblMemberRole_TblRole" FromRole="TblMemberRole" ToRole="TblRole" />
+  </EntityType>
+  <EntityType Name="TblRole">
+    <Key>
+      <PropertyRef Name="RoleID" />
+    </Key>
+    <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TblMemberRole" Relationship="PersonalDbModel.FK_TblMemberRole_TblRole" FromRole="TblRole" ToRole="TblMemberRole" />
+  </EntityType>
+  <Association Name="FK_TblMemberRole_TblMember">
+    <End Type="PersonalDbModel.TblMember" Role="TblMember" Multiplicity="0..1" />
+    <End Type="PersonalDbModel.TblMemberRole" Role="TblMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblMember">
+        <PropertyRef Name="MemberID" />
+      </Principal>
+      <Dependent Role="TblMemberRole">
+        <PropertyRef Name="MemberID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TblMemberRole_TblRole">
+    <End Type="PersonalDbModel.TblRole" Role="TblRole" Multiplicity="0..1" />
+    <End Type="PersonalDbModel.TblMemberRole" Role="TblMemberRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TblRole">
+        <PropertyRef Name="RoleID" />
+      </Principal>
+      <Dependent Role="TblMemberRole">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>
